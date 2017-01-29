@@ -21,6 +21,7 @@ func (a ScpAction) RunAction(sftp *sftp.Client, logger *log.Logger) error {
 
 	logger.Printf("Starting copy from %s to %s\n", a.RemotePath, a.LocalPath)
 	remote, sftpOpenErr := sftp.Open(a.RemotePath)
+	defer remote.Close()
 
 	if sftpOpenErr != nil {
 		return sftpOpenErr
@@ -32,6 +33,7 @@ func (a ScpAction) RunAction(sftp *sftp.Client, logger *log.Logger) error {
 	}
 
 	local, localOpenErr := os.Create(a.LocalPath)
+	defer local.Close()
 
 	if localOpenErr != nil {
 		return localOpenErr
