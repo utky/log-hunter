@@ -1,0 +1,25 @@
+{
+  "config": [
+    {
+      "name": "vagrant",
+      "hosts": [
+        {
+          "hostname": "127.0.0.1",
+          "port": 22,
+          "username": "tempuser",
+          "password": "temp"
+        }
+      ],
+      "commands": [
+        {
+          "action": "scp",
+          "content": "/home/tempuser/hello.log"
+        },
+        {
+          "action": "scp",
+          "content": "/home/tempuser/yahoo"
+        }
+      ]
+    }
+  ]
+}
